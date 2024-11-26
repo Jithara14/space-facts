@@ -1,0 +1,86 @@
+:root {
+  /* Color palette */
+  --color-background: #1a1a2e;
+  --color-card: #162447;
+  --color-primary: #e43f5a;
+  --color-text: #fff;
+  --color-details: #8db1ff;
+  
+  /* Spacing */
+  --spacing-base: clamp(1rem, 2vw, 1.5rem);
+  
+  /* Animations */
+  --transition-speed: 0.3s;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  max-width: min(800px, 90vw);
+  margin-inline: auto;
+  padding: var(--spacing-base);
+  background: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.fact-card {
+  background: var(--color-card);
+  border-radius: 1rem;
+  padding: var(--spacing-base);
+  margin-block: var(--spacing-base);
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 0.2);
+  transition: transform var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fact-card:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 1rem 2rem rgb(0 0 0 / 0.3);
+}
+
+.fact-title {
+  color: var(--color-primary);
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.details {
+  color: var(--color-details);
+  font-size: clamp(1rem, 2vw, 1.1rem);
+}
+
+.details p {
+  margin-block: 0.5rem;
+}
+
+.share-button {
+  background: var(--color-primary);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  color: var(--color-text);
+  font-weight: 600;
+  cursor: pointer;
+  margin-block: 1rem;
+  transition: opacity var(--transition-speed) ease,
+              transform var(--transition-speed) ease;
+}
+
+.share-button:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fact-card,
+  .share-button {
+    transition: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .fact-card {
+    padding: calc(var(--spacing-base) * 0.75);
+  }
+}
